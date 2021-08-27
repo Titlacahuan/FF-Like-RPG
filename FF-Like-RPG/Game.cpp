@@ -4,7 +4,7 @@ Game::Game()
 {
 	choice = 0;
 	playing = true;
-	activeChar = 0;
+	activeCharacter = 0;
 	fileName = "characters.txt";
 }
 
@@ -46,7 +46,7 @@ void Game::mainMenu()
 		break;
 
 	case 3:
-		characters[activeChar].levelUp();
+		characters[activeCharacter].levelUp();
 		break;
 
 	case 4:
@@ -55,7 +55,7 @@ void Game::mainMenu()
 
 	case 5:
 		std::cout << "Character Sheet" << std::endl;
-		std::cout << characters[activeChar].toString();
+		std::cout << characters[activeCharacter].toString();
 		break;
 
 	case 6:
@@ -80,10 +80,10 @@ void Game::mainMenu()
 
 void Game::initGame()
 {
-	Enemy e(rand() % 100 + 1);
-	std::cout << e.getAsString() << std::endl;
-
 	createNewCharacter();
+	Puzzle p("puzzle.txt");
+	std::cout << std::to_string(p.answerSize()) << std::endl;
+	std::cout << p.toString();
 }
 
 void Game::createNewCharacter()
@@ -93,8 +93,8 @@ void Game::createNewCharacter()
 	getline(std::cin, name);
 
 	this->characters.push_back(Character());
-	this->activeChar = this->characters.size() - 1;
-	this->characters[this->activeChar].initialize(name);
+	this->activeCharacter = this->characters.size() - 1;
+	this->characters[this->activeCharacter].initialize(name);
 }
 
 void Game::saveCharacters()
@@ -118,5 +118,9 @@ void Game::loadCharacter()
 
 void Game::travel()
 {
+	this->characters[activeCharacter].travel();
 
+	Event ev;
+
+	ev.generateEvent(this->characters[activeCharacter]);
 }

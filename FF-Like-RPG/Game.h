@@ -3,7 +3,7 @@
 #include <ctime>
 #include <vector>
 #include <fstream>
-#include "Character.h"
+#include "Event.h"
 
 class Game
 {
@@ -32,7 +32,7 @@ private:
 	bool playing;
 
 	// Character
-	int activeChar;
+	int activeCharacter;
 	std::vector<Character> characters;
 	std::string fileName;
 };

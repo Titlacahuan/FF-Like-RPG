@@ -5,6 +5,10 @@ Character::Character()
 	this->xPos = 0.0;
 	this->yPos = 0.0;
 	
+	this->distanceTravelled = 0;
+
+	this->gold = 0;
+	
 	this->name = "NONE";
 	this->level = 1;
 	this->exp = 0;
@@ -36,6 +40,9 @@ Character::~Character()
 
 void Character::initialize(const std::string name)
 {
+	this->distanceTravelled = 0;
+	this->gold = 100;
+
 	this->name = name;
 	this->level = 1;
 	this->exp = 0;

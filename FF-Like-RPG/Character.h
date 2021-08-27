@@ -23,6 +23,15 @@ public:
 	inline const double& getX() const { return this->xPos; }
 	inline const double& getY() const { return this->yPos; }
 
+	inline const int& getDistanceTravelled() { return this->distanceTravelled; }
+
+	inline const Weapon& getWeapon() const { return this->weapon; }
+	inline const Armor& getHeadArmor() const { return this->armorHead; }
+	inline const Armor& getChestArmor() const { return this->armorChest; }
+	inline const Armor& getArmsArmor() const { return this->armorArms; }
+	inline const Armor& getLegsArmor() const { return this->armorLegs; }
+	inline const int& getGold() const { return this->gold; }
+
 	inline const std::string& getName() const { return this->name; }
 	inline const int& getLevel() const { return this->level; }
 	inline const int& getExp() const { return this->exp; }
@@ -46,17 +55,22 @@ public:
 	inline const int& getSkillPoints() const { return this->skillPoints; }
 
 	// Modifiers
+	inline void setDistanceTravelled(const int& distance) { this->distanceTravelled = distance; }
+	inline void travel() { this->distanceTravelled++; }
 
 private:
 	double xPos;
 	double yPos;
 
+	int distanceTravelled;
+
 	Inventory inventory;
 	Weapon weapon;
-	Armor armor_head;
-	Armor armor_chest;
-	Armor armor_arms;
-	Armor armor_legs;
+	Armor armorHead;
+	Armor armorChest;
+	Armor armorArms;
+	Armor armorLegs;
+	int gold;
 	
 	std::string name;
 	int level;
