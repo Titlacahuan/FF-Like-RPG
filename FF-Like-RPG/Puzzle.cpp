@@ -30,6 +30,19 @@ Puzzle::~Puzzle()
 
 }
 
+std::string Puzzle::askQuestion()
+{
+	std::string str = "";
+
+	str += this->question + "\n";
+	for (size_t i = 0; i < answers.size(); i++)
+	{
+		str += std::to_string(i) + ": " + answers[i] + "\n";
+	}
+
+	return str;
+}
+
 std::string Puzzle::toString()
 {
 	std::string str = "";
@@ -43,4 +56,16 @@ std::string Puzzle::toString()
 	str += "Correct answer: " + std::to_string(this->correctAnswer) + "\n";
 
 	return str;
+}
+
+bool Puzzle::isUserAbleToTry(int& userTry)
+{
+	bool userIsAbleToTry = true;
+
+	if (userTry > this->maxTries)
+	{
+		userIsAbleToTry = false;
+	}
+
+	return userIsAbleToTry;
 }

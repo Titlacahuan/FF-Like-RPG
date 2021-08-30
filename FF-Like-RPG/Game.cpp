@@ -22,7 +22,7 @@ void Game::mainMenu()
 	std::cout << "3: Level Up" << std::endl;
 	std::cout << "4: Rest" << std::endl;
 	std::cout << "5. Character Sheet" << std::endl;
-	std::cout << "6. Create New Character" << std::endl;
+	std::cout << "6. New Character" << std::endl;
 	std::cout << "7. Save Characters" << std::endl;
 	std::cout << "8. Load Characters" << std::endl;
 	std::cout << std::endl;
@@ -33,42 +33,42 @@ void Game::mainMenu()
 
 	switch (choice)
 	{
-	case 0:
+	case 0: // Quit
 		playing = false;
 		break;
 
-	case 1:
+	case 1: // Travel
+		travel();
+		break;
+
+	case 2: // Shop
 		std::cout << "Not implemented yet" << std::endl;
 		break;
 
-	case 2: 
-		std::cout << "Not implemented yet" << std::endl;
-		break;
-
-	case 3:
+	case 3: // Level Up
 		characters[activeCharacter].levelUp();
 		break;
 
-	case 4:
+	case 4: // Rest
 		std::cout << "Not implemented yet" << std::endl;
 		break;
 
-	case 5:
+	case 5: // Character Sheet
 		std::cout << "Character Sheet" << std::endl;
 		std::cout << characters[activeCharacter].toString();
 		break;
 
-	case 6:
+	case 6: // New Character
 		std::cin.ignore();
 		createNewCharacter();
 		saveCharacters();
 		break;
 
-	case 7:
+	case 7: // Save Characters
 		saveCharacters();
 		break;
 
-	case 8:
+	case 8: // Load Characters
 		std::cout << "Not implemented yet" << std::endl;
 		break;
 
@@ -81,9 +81,6 @@ void Game::mainMenu()
 void Game::initGame()
 {
 	createNewCharacter();
-	Puzzle p("puzzle.txt");
-	std::cout << std::to_string(p.answerSize()) << std::endl;
-	std::cout << p.toString();
 }
 
 void Game::createNewCharacter()
